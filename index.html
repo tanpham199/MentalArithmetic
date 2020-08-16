@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="mentalArithmetic.css">
+    <title>Mental Arithmetic</title>
+</head>
+
+<body>
+    <h1 id="header">Mental&nbsp&nbspArithmetic&nbsp&nbspTest</h1>
+
+    <div id="controler">
+        <button id="reset">Start</button>
+        <span id="counter"></span>
+        <button class="mode selected">Easy</button>
+        <button class="mode">Hard</button>
+        <span id="score">Score: 0</span>
+    </div>
+
+    <div id="container">
+        <div id="test">Rules:</div>
+        <div class="block"></div>
+        <div class="block"></div>
+        <div class="block"></div>
+        <div class="block"></div>
+        <div class="block"></div>
+        <div class="block"></div>
+        <progress value="0" max="17" id="progressBar"></progress>
+        <div class="detail">Correct Answres:&nbsp&nbsp+ 1</div>
+        <div class="detail">Wrong Answers:&nbsp&nbsp- 1</div>
+        <div class="detail">No Answers:&nbsp&nbsp+ 0</div>
+    </div>
+
+    <script src="mentalArithmetic.js"></script>
+</body>
+
+</html>
