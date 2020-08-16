@@ -31,6 +31,10 @@ body {
     -o-transition: background-color 0.3s;
 }
 
+.block:hover {
+    background-color: #cacaca;
+}
+
 #test {
     text-align: center;
     font-size: 200%;
