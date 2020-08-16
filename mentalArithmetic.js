@@ -10,7 +10,7 @@ var counter = document.getElementById("counter");
 var btnMode = document.querySelectorAll(".mode");
 var score = document.getElementById("score");
 var detail = document.querySelectorAll(".detail");
-var res, correct = 0, wrong = 0, timeOut = 0;
+var res, correct = 0, wrong = 0, timeOut = 0, o, sco;
 var timeleft, timeleft2, timer, timer2;
 
 
@@ -45,15 +45,12 @@ function setupBlocks() {
             var clicked = parseInt(this.textContent);
             if (clicked === res) {
                 correct++;
+                sco++;
             } else {
                 wrong++;
+                if (sco - 1 >= 0) sco--;
             }
-
-            if (correct - wrong <= 0) {
-                score.textContent = "Score: 0";
-            } else {
-                score.textContent = "Score: " + (correct - wrong);
-            }
+            score.textContent = "Score: " + sco;
             refresh();
             timeleft2 = timePerTest;
         });
@@ -66,6 +63,7 @@ function setupResetButton() {
             correct = 0;
             wrong = 0;
             timeOut = 0;
+            sco = 0;
             this.textContent = "Stop";
             progressBar.style.display = "inline-block";
             score.style.display = "inline-block";
@@ -143,12 +141,7 @@ function startTestTimer() {
 }
 
 function clear() {
-    var final = correct - wrong;
-    if (final >= 0) {
-        test.textContent = "Result: " + final;
-    } else {
-        test.textContent = "Result: 0";
-    }
+    test.textContent = "Result: " + sco;
 
     for (var i = 0; i < detail.length; i++) {
         detail[i].style.display = "block";
@@ -168,8 +161,14 @@ function clear() {
 function randomTest() {
     var num1 = Math.floor(Math.random() * 500);
     var num2 = Math.floor(Math.random() * 500);
-    res = num1 + num2;
-    return num1 + " + " + num2 + " =";
+    var o = Math.floor(Math.random() * 2);
+    if (o === 0) {
+        res = num1 + num2;
+        return num1 + " + " + num2 + " =";
+    } else {
+        res = num1 - num2;
+        return num1 + " - " + num2 + " =";
+    }
 }
 
 function randomResults() {
